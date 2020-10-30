@@ -313,5 +313,5 @@ Devise.setup do |config|
   #   provider :facebook, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
 
   # end
-  config.omniauth :facebook, "873954183009793", "3f48fcaf24c30fdd869eb90a92016fc1", callback_url:"http://localhost:3000/users/auth/facebook/callback"
+  config.omniauth :facebook, "2840122139650715", "0dfc0600b43feb0fe0b826f652bf93ab", scope: 'public_profile,email', callback_url:"http://localhost:3000/users/auth/facebook/callback"
 end
