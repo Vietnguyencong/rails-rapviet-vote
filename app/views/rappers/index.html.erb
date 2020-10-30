@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rappers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rappers.each do |rapper| %>
+      <tr>
+        <td><%= rapper.name %></td>
+        <td><%= rapper.url %></td>
+        <td><%= link_to 'Show', rapper %></td>
+        <td><%= link_to 'Edit', edit_rapper_path(rapper) %></td>
+        <td><%= link_to 'Destroy', rapper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= link_to like_rapper_path(rapper), method: :put do %>
+          <div class="engagement">
+            
+            <p><%= rapper.get_upvotes.size %> </p>
+          </div>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rapper', new_rapper_path %>

@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
-  def page
+  def index
+    @rappers = Rapper.all
   end
 end
