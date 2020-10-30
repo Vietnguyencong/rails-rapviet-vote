@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  acts_as_voter
+  def get_voted_rapper
+    return self.find_up_voted_items.first
+  end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   def self.new_with_session(params, session)
@@ -19,4 +24,6 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
       end
   end
+
+  
 end

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rapper.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @rapper.url %>
+</p>
+
+<%= link_to 'Edit', edit_rapper_path(@rapper) %> |
+<%= link_to 'Back', rappers_path %>
