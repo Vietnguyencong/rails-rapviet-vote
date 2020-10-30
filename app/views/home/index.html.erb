@@ -64,7 +64,7 @@
               <div class="card-body text-center">
                 <div class="mb-3">
                   <h3><%=rapper.name%></h3>
-                  <%if !current_user%>
+                  <%if !current_user %>
                     <!-- Button trigger modal -->
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Vote
@@ -81,12 +81,18 @@
                       </div>
                       <!-- Modal -->
                   <%else%>
-                    <%= link_to like_rapper_path(rapper), method: :put, class: "btn btn-default btn-md btn-warning" do %>
-                      <span class="glyphicon glyphicon-chevron-up">Vote</span>
-                    <% end %>
+                    <%if !current_user.voted%>
+                      <%= link_to like_rapper_path(rapper), method: :put, class: "btn btn-default btn-md btn-warning" do %>
+                        <span class="glyphicon glyphicon-chevron-up">Vote</span>
+                      <% end %>
+                    <%else%>
+                      <%if rapper.id == current_user.get_voted_rapper.id%>
+                        you voted for <%=rapper.name%>
+                      <%end%>
+                    <%end%>
                   <%end%>
                 </div>
-                <div class="font-weight-light">your guy has <%=rapper.get_upvotes.size%> believers</div>
+                <div class="font-weight-light">Votes counter: <%=rapper.get_upvotes.size%> voters</div>
               </div>
           </div>
       </div>
