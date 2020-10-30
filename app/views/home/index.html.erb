@@ -12,12 +12,10 @@
 
 <hr>
 <!--/.Navbar-->
-
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="/">Rapviet</a>
   <div class=" text-left"><%=link_to "Logout",destroy_user_session_path, class:"btn btn-sm btn-danger" %></div>
 </nav>
-
 <!--/.Navbar-->
 
 <div class="container">
@@ -27,7 +25,7 @@
           <div class="panel-body p-3">
             <form id="login" method="post" action="/user/login/">
               <button type="submit" class="btn btn-success btn-block" style="margin-top: 10px">
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Login by Facebook
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
               </button>
             </form>
           </div>
@@ -91,6 +89,9 @@
                   <%end%>
                 </div>
                 <div class="font-weight-light">Votes counter: <%=rapper.get_upvotes.size%> voters</div>
+                
+      <%= social_share_button_tag(rapper.name, :url => "http://myapp.com/foo/bar") %>
+
               </div>
           </div>
       </div>

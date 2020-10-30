@@ -103,7 +103,12 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
+    json (2.3.1)
     jwt (2.2.2)
+    koala (3.0.0)
+      addressable
+      faraday
+      json (>= 1.8)
     loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -252,6 +257,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise
   jbuilder (~> 2.7)
+  koala
   omniauth-facebook
   pg
   puma (~> 4.1)
