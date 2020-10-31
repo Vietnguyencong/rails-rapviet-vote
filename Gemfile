@@ -6,6 +6,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'acts_as_votable'
 gem 'social-share-button'
+gem 'chartkick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
