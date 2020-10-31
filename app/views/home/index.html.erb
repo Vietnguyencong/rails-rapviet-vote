@@ -62,11 +62,14 @@
       <p>bạn cần chọn lucky number </p>
   </div>
 
-    <div class="row mt-5 mb-5" >
-      <%= bar_chart @data%>
+    <div class="row">
+      <%= bar_chart @data, library: {
+        legend: {position: "left"},
+    }%>
     <div>
  <!--the rules and clock -->
 <br>
+
 <div class="row justify-content-center">
 <% @rappers.each do |rapper| %>
         <div classs="col col-3">
