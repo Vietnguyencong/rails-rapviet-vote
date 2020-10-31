@@ -10,29 +10,10 @@ class HomeController < ApplicationController
     Rapper.all.each do |r|
     _vote_count.merge!(r.name => r.get_upvotes.size)
     end
-
-    return map_objects(_vote_count.sort_by(&:first))
+    #sort vote count descendingly by rappers
+    return map_objects(Hash[_vote_count.sort_by{|k, v| v}.reverse])
   end
 
-  # put method 
-  def get_lucky_number
-    respond_to do |format| 
-        if current_user.update(user_params)
-          current_user.shared = true
-          current_user.save
-          format.html { redirect_to root_path}
-          format.json { render :show, status: :ok, location:current_user }
-        else
-          format.html { render :index }
-          format.json { render json: current_user.errors, status: :unprocessable_entity }
-        end
-    end
-  end
-
-  private
-    def user_params
-      params.require(:user).permit(:lucky_number)
-    end
   # convert hash data into nested hash format for chartkick
   def map_objects(hash)
     new_obj = []
@@ -42,4 +23,19 @@ class HomeController < ApplicationController
     return new_obj
   end
 
+  # get total vote count
+  def get_total_votes
+    total = 0
+    Rapper.all.each do |r|
+      total += r.get_upvotes.size
+    end
+    return total
+  end
+  helper_method :get_total_votes
+
+  private
+    def user_params
+      params.require(:user).permit(:lucky_number)
+    end
+  
 end

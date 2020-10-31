@@ -20,7 +20,7 @@
       <div class="row ">
             <div class="m-0 col-4 text-center">Welcome <%=current_user.name%> to Rapvote </div>
             <div class="col col-4 text-center">
-              Tổng số lượt bình chọn: <strong><%=User.count%></strong>
+              Tổng số lượt bình chọn: <strong><%= get_total_votes%></strong>
             </div>  
             <div class ="col col-4"style="font-size:">Count down: <strong class="" id="demo"></strong></div>  
       </div>  
@@ -81,10 +81,12 @@
  
 
     <div class="row">
-      <%= bar_chart @data, library: {
-        legend: {position: "left"},
-    }%>
-    <div>
+      <div class="col col-lg-12"
+        <%= bar_chart @data, library: {
+          legend: {position: "left"},
+        }%>
+      </div>
+    </div>
 <br>
 
 <div class="row justify-content-center">
