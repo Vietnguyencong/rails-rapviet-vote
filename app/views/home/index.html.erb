@@ -43,10 +43,9 @@
     <div>
 
 <br>
-  <div class="row m-3">
+  <div class="row">
 <% @rappers.each do |rapper| %>
-      <div class="col col-4">
-          <div class="card m-4" style="width: 18rem;">
+          <div class="card m-4 col-lg-3" style="width: 18rem;">
               <img src="https://static.wikia.nocookie.net/rapviet/images/e/e0/MCk.jpg/revision/latest/scale-to-width-down/538?cb=20200905034244&path-prefix=vi" class="card-img-top" alt="...">
               <div class="card-body text-center">
                 <div class="mb-3">
@@ -82,7 +81,6 @@
                 <div class="font-weight-light">Votes counter: <%=rapper.get_upvotes.size%> voters</div>
               </div>
           </div>
-      </div>
 <% end %>
 </div>
 
