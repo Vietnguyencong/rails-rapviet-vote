@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Rapper.create(name: 'G Ducky', url: 'https://rapviet.fandom.com/vi/wiki/G_Ducky', image: 'https://2sao.vietnamnetjsc.vn/images/2020/09/20/20/04/G-2.jpg')
+
+Rapper.create(name: 'RPT Gonzo', url: 'https://rapviet.fandom.com/vi/wiki/%C4%90%E1%BA%B7c_bi%E1%BB%87t:T%C3%ACm_ki%E1%BA%BFm?query=rpt+gonzo&scope=internal&navigationSearch=true', image: 'https://viethiphop.vn/wp-content/uploads/2020/07/23668892_1676037689085155_767618430570457071_o-600x600.jpg')

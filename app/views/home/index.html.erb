@@ -4,6 +4,7 @@
 <%end%>
 <% unless current_user %> 
   <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+  <%= link_to "Sign up", new_user_registration_path %>
 <% else %>
   <%= current_user[:name] %>
   <%= link_to "Logout", destroy_user_session_path %>
@@ -37,21 +38,9 @@
   <%end%>  
     <hr class="col-12 col-sm-6 mx-auto">
 
-
-<% @rappers.each do |rapper| %>
-    <div class="row row-lg">
-      <div class="col-1">
-        <%=rapper.name%>
-      </div>
-      <div class="col-9">
-        <div class="progress mb-3">
-          <div class="progress-bar bg-success" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><%= rapper.name%></div>
-        </div>
-      </div>
-      <div class="col-2"><%=rapper.get_upvotes.size%> voters</div>
-    </div>
-    <%link_to "edit", edit_rapper_path(rapper)%>
-<% end %>
+    <div class="row">
+      <%= bar_chart @data, colors: ["#ce7d78", "#ea9e70"]%>
+    <div>
 
 <br>
   <div class="row m-3">
