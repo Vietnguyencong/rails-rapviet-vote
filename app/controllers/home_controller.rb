@@ -9,6 +9,7 @@ class HomeController < ApplicationController
     Rapper.all.each do |r|
       _vote_count.merge!(r.name => r.get_upvotes.size)
     end
-    return _vote_count
+    return _vote_count.sort_by(&:first)
+    
   end
 end
