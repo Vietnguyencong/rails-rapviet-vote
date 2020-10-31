@@ -39,7 +39,9 @@
   <%end%>  
 
     <div class="row">
-      <%= bar_chart @data%>
+      <%= bar_chart @data, library: {
+        legend: {position: "left"},
+    }%>
     <div>
 
 <br>
