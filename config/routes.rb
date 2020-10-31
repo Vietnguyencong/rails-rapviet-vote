@@ -5,7 +5,10 @@ Rails.application.routes.draw do
       # put 'dislike', to: 'rappers#downvote'
     end
   end
-  # special controller that manage the response when the user's info send back to us 
+  # special controller that manage the response when the user's info send back to us
+  devise_scope :user do
+    put 'get_lucky_number', to: 'home#get_lucky_number'
+  end
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
   root 'home#index'
   get 'home/index'

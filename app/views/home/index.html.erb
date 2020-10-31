@@ -1,22 +1,3 @@
-<%if current_user%>
-    <%= current_user.inspect%>
-<%end%>
-<% unless current_user %> 
-  <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-<% else %>
-  <%= current_user[:name] %>
-  <%= link_to "Logout", destroy_user_session_path %>
-<% end %><br>
-<%= link_to 'New Rapper', new_rapper_path %><br>
-<%= link_to 'sign in', user_session_path %><br>
-<!--/.Navbar-->
-
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="/"><strong>Rapviet</strong></a>
-  <div class=" text-left"><%=link_to "Logout",destroy_user_session_path, class:"btn btn-sm btn-danger" %></div>
-</nav>
-<%= render 'layouts/alerts' %>
-<!--/.Navbar-->
 
 <div class="container">
   <%if !current_user%>
@@ -32,16 +13,27 @@
     </div>
     <hr class="col-12 col-sm-6 mx-auto">
   <%end%>  
+
   <!--after-user-vote view-->
-  this is the view after the user vote 
+  
   <% if current_user %>
+          <h3 class="m-0">Welcome <%=current_user.name%> to rapviet vote </h3>
+
           <%if current_user.voted%>
              <div class="row">
               <div class="col col-5 ">
-                <div class="text-center">welcome <%=current_user.name%> to rapviet vote </div>
-              </div>
+                <%if current_user.voted%>
+                  <div class="">you voted for <%=current_user.get_voted_rapper.name%> </div>
+                  <%if current_user.add_lucky_number%>
+                    <div class="">Your lucky number: <%=current_user.lucky_number%> </div>
+                  <%else%>
+                    <%= render 'rappers/form', rapper: current_user.get_voted_rapper %>
 
-              <div class="col col-7 ">
+                  <%end%>x
+                <%end%>
+                      
+              </div>
+              <div class="col col-7  ">
                   <div class="card mx-auto"  style="width: 17rem;" >
                     <img src="https://static.wikia.nocookie.net/rapviet/images/e/e0/MCk.jpg/revision/latest/scale-to-width-down/538?cb=20200905034244&path-prefix=vi" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -49,8 +41,9 @@
                         <h3><%=current_user.get_voted_rapper.name%></h3>
                       </div>
                     <div class="font-weight-light">Votes counter: <%=current_user.get_voted_rapper.get_upvotes.size%> voters</div>
+                    <div id="button" class="fb-share-button mb-1 mt-1" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+
                 </div>
-              
           </div>
               </div>
             </div>
@@ -61,14 +54,14 @@
   <!--after-user-vote view-->
 
   <!--the rules and clock -->
-  <div class="row row-lg text-center m-4">
-    <div class="col col-7 border">
-      write the rules right here, write it in vietnamese or english?
-    </div>
-    <div class="col col-5 border">
-      put the clock right here if want 
-    </div>
+  <div class="row row-lg mt-2 mb-2 text-center">
+      <p>để đạt được giải thưởng trị giá $xx. Chỉ có 1 người chiến thắng và giành được phần thưởng may mắn </p>
+      <p>Bạn chỉ có thể chọn 1 rapper </p>
+      <p>Bạn không thể đổi sự bình chọn sau khi bạn vote </p>
+      <p>Bạn cần phải click vào share website này vào tường</p>
+      <p>bạn cần chọn lucky number </p>
   </div>
+
     <div class="row mt-5 mb-5" >
       <%= bar_chart @data%>
     <div>
@@ -103,10 +96,7 @@
                   <%else%>
                     <%if !current_user.voted%>
                       <%= link_to "vote", like_rapper_path(rapper), method: :put, class: "btn btn-default btn-md btn-warning",:data => {:confirm => 'Are you Sure you want to vote for this man?'} %>
-                    <%else%>
-                      <%if rapper.id == current_user.get_voted_rapper.id%>
-                        you voted for <%=rapper.name%>
-                      <%end%>
+                      
                     <%end%>
                   <%end%>
                 </div>
@@ -114,7 +104,6 @@
               </div>
           </div>
         </div>
-
 <% end %>
 </div>
 

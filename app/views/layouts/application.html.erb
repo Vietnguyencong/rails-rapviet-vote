@@ -18,8 +18,28 @@
   </head>
 
   <body>
-    
+    <%if current_user%>
+      <%= current_user.inspect%>
+    <%end%>
+    <% unless current_user %> 
+      <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+    <% else %>
+      <%= current_user[:name] %>
+      <%= link_to "Logout", destroy_user_session_path %>
+    <% end %><br>
+    <%= link_to 'New Rapper', new_rapper_path %><br>
+    <%= link_to 'sign in', user_session_path %><br>
+    <!--/.Navbar-->
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/"><strong>Rapviet</strong></a>
+      <div class=" text-left"><%=link_to "Logout",destroy_user_session_path, class:"btn btn-sm btn-danger" %></div>
+    </nav>
+    <%= render 'layouts/alerts' %>
+    <!--/.Navbar-->
+
     <%= yield %>
     
  </body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0&appId=424846252005242&autoLogAppEvents=1" nonce="NyBwiUlc"></script>     
 </html>
