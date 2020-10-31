@@ -1,24 +1,21 @@
-
 <%if current_user%>
     <%= current_user.inspect%>
 <%end%>
 <% unless current_user %> 
   <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
 <% else %>
   <%= current_user[:name] %>
   <%= link_to "Logout", destroy_user_session_path %>
 <% end %><br>
 <%= link_to 'New Rapper', new_rapper_path %><br>
-
-<hr>
+<%= link_to 'sign in', user_session_path %><br>
 <!--/.Navbar-->
 
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Rapviet</a>
+  <a class="navbar-brand" href="/"><strong>Rapviet</strong></a>
   <div class=" text-left"><%=link_to "Logout",destroy_user_session_path, class:"btn btn-sm btn-danger" %></div>
 </nav>
-
+<%= render 'layouts/alerts' %>
 <!--/.Navbar-->
 
 <div class="container">
@@ -26,52 +23,77 @@
     <div class="col-12 col-sm-4 mx-auto  p-0" style="margin-top: 0px;">
         <div class="panel panel-default ">
           <div class="panel-body p-3">
-            <form id="login" method="post" action="/user/login/">
               <button type="submit" class="btn btn-success btn-block" style="margin-top: 10px">
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Login by Facebook
+                <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path,class:"btn btn-success btn-bloc" %>
               </button>
-            </form>
           </div>
-          <div class="text-center"><p class="font-weight-light">You must login to Vote!</p></div>
+          <div class="text-center"><p class="font-weight-light"><strong>You must login to Vote!</strong></p></div>
         </div>
     </div>
     <hr class="col-12 col-sm-6 mx-auto">
   <%end%>  
+  <!--after-user-vote view-->
+  this is the view after the user vote 
+  <% if current_user %>
+          <%if current_user.voted%>
+             <div class="row">
+              <div class="col col-5 ">
+                <div class="text-center">welcome <%=current_user.name%> to rapviet vote </div>
+              </div>
 
-    <div class="row">
+              <div class="col col-7 ">
+                  <div class="card mx-auto"  style="width: 17rem;" >
+                    <img src="https://static.wikia.nocookie.net/rapviet/images/e/e0/MCk.jpg/revision/latest/scale-to-width-down/538?cb=20200905034244&path-prefix=vi" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <div class="mb-3">
+                        <h3><%=current_user.get_voted_rapper.name%></h3>
+                      </div>
+                    <div class="font-weight-light">Votes counter: <%=current_user.get_voted_rapper.get_upvotes.size%> voters</div>
+                </div>
+              
+          </div>
+              </div>
+            </div>
+          <%end%>
+      <%end%>
+  
+
+  <!--after-user-vote view-->
+
+  <!--the rules and clock -->
+  <div class="row row-lg text-center m-4">
+    <div class="col col-7 border">
+      write the rules right here, write it in vietnamese or english?
+    </div>
+    <div class="col col-5 border">
+      put the clock right here if want 
+    </div>
+  </div>
+    <div class="row mt-5 mb-5" >
       <%= bar_chart @data%>
     <div>
-
+ <!--the rules and clock -->
 <br>
-<<<<<<< HEAD
-           <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-  Tooltip on top
-        </button>
-  <div class="row m-3">
+<div class="row justify-content-center">
 <% @rappers.each do |rapper| %>
-      <div class="col col-4">
- 
-
-          <div class="card m-4"   data-toggle="tooltip" data-placement="top" title="Tooltip on top" style="width: 18rem;">
-=======
-  <div class="row">
-<% @rappers.each do |rapper| %>
-          <div class="card m-4 col-lg-3" style="width: 18rem;">
->>>>>>> f373068d9ea818fac8c8c12baf3c16e39f43677d
+        <div classs="col col-3">
+          <div class="card m-3" >
               <img src="https://static.wikia.nocookie.net/rapviet/images/e/e0/MCk.jpg/revision/latest/scale-to-width-down/538?cb=20200905034244&path-prefix=vi" class="card-img-top" alt="...">
               <div class="card-body text-center">
                 <div class="mb-3">
                   <h3><%=rapper.name%></h3>
                   <%if !current_user %>
                     <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Vote
-                      </button>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Vote</button>
                       <!-- Modal -->
                       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                             <div class="modal-body" height="400">
+                              <div>
+                                <p><strong><%=rapper.name%></strong>: Thank you for believing in me!!</p> 
+                                <p><strong>me</strong>: let me sign in then I will vote for you!! </p>
+                              </div>
                               <%=link_to "Sign In by Facebook", user_facebook_omniauth_authorize_path, class:"btn btn-lg btn-primary"%>
                             </div>
                           </div>
@@ -80,9 +102,7 @@
                       <!-- Modal -->
                   <%else%>
                     <%if !current_user.voted%>
-                      <%= link_to like_rapper_path(rapper), method: :put, class: "btn btn-default btn-md btn-warning" do %>
-                        <span class="glyphicon glyphicon-chevron-up">Vote</span>
-                      <% end %>
+                      <%= link_to "vote", like_rapper_path(rapper), method: :put, class: "btn btn-default btn-md btn-warning",:data => {:confirm => 'Are you Sure you want to vote for this man?'} %>
                     <%else%>
                       <%if rapper.id == current_user.get_voted_rapper.id%>
                         you voted for <%=rapper.name%>
@@ -93,6 +113,8 @@
                 <div class="font-weight-light">Votes counter: <%=rapper.get_upvotes.size%> voters</div>
               </div>
           </div>
+        </div>
+
 <% end %>
 </div>
 
