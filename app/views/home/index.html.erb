@@ -17,31 +17,35 @@
   <!--after-user-vote view-->
   
   <% if current_user %>
-          <h3 class="m-0">Welcome <%=current_user.name%> to rapviet vote </h3>
-
+          <div class="row d-flex ">
+            <h3 class="m-0 col-5 text-center">Welcome <%=current_user.name%> to rapviet vote </h3>
+            <h3 class="col col-7 text-center">Tổng số lượt bình chọn: <%=User.count%></h3>  
+          </div>
+          <hr class="col col-9">
           <%if current_user.voted%>
              <div class="row">
-              <div class="col col-5 ">
+              <div class="col col-5 d-flex flex-column  align-items-center" style="font-size:20px">
                 <%if current_user.voted%>
-                  <div class="">you voted for <%=current_user.get_voted_rapper.name%> </div>
+                  <div class="">Bạn đã vote cho <strong><%=current_user.get_voted_rapper.name%></strong> </div>
                   <%if current_user.add_lucky_number%>
                     <div class="">Your lucky number: <%=current_user.lucky_number%> </div>
                   <%else%>
-                    <%= render 'rappers/form', rapper: current_user.get_voted_rapper %>
-
-                  <%end%>x
+                     <% if !current_user.add_lucky_number %> 
+                      <%= render 'rappers/form', rapper: current_user.get_voted_rapper, :data => {:confirm => "Bạn có chắc mình muốn chọn số này ?? tại vì bạn không thể đổi lại đâu"} %>
+                    <%end%>
+                  <%end%>
                 <%end%>
                       
               </div>
               <div class="col col-7  ">
                   <div class="card mx-auto"  style="width: 17rem;" >
                     <img src="https://static.wikia.nocookie.net/rapviet/images/e/e0/MCk.jpg/revision/latest/scale-to-width-down/538?cb=20200905034244&path-prefix=vi" class="card-img-top" alt="...">
-                    <div class="card-body">
+                    <div class="card-body" style="font-size:20px">
                       <div class="mb-3">
                         <h3><%=current_user.get_voted_rapper.name%></h3>
                       </div>
-                    <div class="font-weight-light">Votes counter: <%=current_user.get_voted_rapper.get_upvotes.size%> voters</div>
-                    <div id="button" class="fb-share-button mb-1 mt-1" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                    <div class="font-weight-light"> <%=current_user.get_voted_rapper.get_upvotes.size%> voters</div>
+                    <div id="button" class="fb-share-button mb-1 mt-1" data-href="https://rapviet.herokuapp.com/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
 
                 </div>
           </div>
@@ -87,8 +91,8 @@
                           <div class="modal-content">
                             <div class="modal-body" height="400">
                               <div>
-                                <p><strong><%=rapper.name%></strong>: Thank you for believing in me!!</p> 
-                                <p><strong>me</strong>: let me sign in then I will vote for you!! </p>
+                                <p><strong><%=rapper.name%></strong>: Cảm ơn đã tin tưởng, tôi sẽ không làm bạn thất vọng!!</p> 
+                                <p><strong>me</strong>: Để tui sign in xong rồi tui sẽ vote cho ông!! </p>
                               </div>
                               <%=link_to "Sign In by Facebook", user_facebook_omniauth_authorize_path, class:"btn btn-lg btn-primary"%>
                             </div>
@@ -103,7 +107,7 @@
                     <%end%>
                   <%end%>
                 </div>
-                <div class="font-weight-light">Votes counter: <%=rapper.get_upvotes.size%> voters</div>
+                <div class="font-weight-light" style="font-size:20px"> <%=rapper.get_upvotes.size%> lượt bình chọn</div>
               </div>
           </div>
         </div>
