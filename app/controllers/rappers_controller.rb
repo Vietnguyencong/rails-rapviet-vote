@@ -64,7 +64,7 @@ class RappersController < ApplicationController
     end
   end
 
-
+  # put method - > get method 
   def upvote
     @rap = Rapper.find(params[:id])
     if (current_user)

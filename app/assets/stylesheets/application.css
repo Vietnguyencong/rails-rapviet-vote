@@ -48,3 +48,20 @@ html{
     -o-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
     box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
 }
+
+.header-shadow{
+    background-image: url('https://images.unsplash.com/photo-1510682657356-6ee07db8204b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* width: XXpx;
+    height: XXpx; */
+}
+
+/* body{
+    background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+/* .rules{
+    color:white;
+} */

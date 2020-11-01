@@ -4,6 +4,9 @@ class HomeController < ApplicationController
     @data = get_rapper_data
   end
 
+  def rules
+  end
+  
   #get data for chartkick
   def get_rapper_data
     _vote_count = {}
