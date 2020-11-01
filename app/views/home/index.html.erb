@@ -4,26 +4,26 @@
   <%=link_to home_rules_path do%>
     <div class="row">
       <div class="col col-lg-12 text-white">
-        <h4>Tham gia bình chọn dự đoán người chiến thắng Rap Việt để có cơ hội nhận được 2,000,00VNĐ tiền mặt. Click vào đây để xem chi tiết thể lệ bình chọn</h4>
+        <h5 class="text-center">Tham gia bình chọn dự đoán người chiến thắng Rap Việt để có cơ hội nhận được 2,000,00VNĐ tiền mặt. Click vào  <span style="color:#33CEFF">đây</span> để xem chi tiết thể lệ bình chọn</h5>
       </div>
     </div>
   <% end %>
   <% if current_user %>
   <div class="card big-card header-shadow mt-3 text-white" >
-  <div class="card-header" style="font-size:25px">
+  <div class="card-header" style="font-size:20px">
       <div class="row ">
             <div class="m-0 col-4 text-center">Welcome <%=current_user.name%> to Rapvote </div>
             <div class="col col-4 text-center">
               Tổng số lượt bình chọn: <strong><%= get_total_votes %></strong>
             </div>  
-            <div class ="col col-4"style="font-size:">Count down: <strong class="" id="demo"></strong></div>  
+            <div class ="col col-4"style="font-size:">Hạn Chót: <strong class="" id="demo"></strong></div>  
       </div>  
   </div>
 
   <div class="card-body ml-5   ">
      <%if current_user.voted%>
              <div class="row">
-              <div class="col col-5 d-flex flex-column " style="font-size:20px">
+              <div class="col col-5 d-flex flex-column " style="font-size:18px">
                 <%if current_user.voted%>
                   <div class="mt-3">Bạn đã vote cho <strong><%=current_user.get_voted_rapper.name%></strong> </div>
                   <%if current_user.add_lucky_number%>
@@ -55,12 +55,12 @@
           <%end%>
       <%else%>
       <div class="card big-card mt-3" >
-        <div class="card-header" style="font-size:25px">
+        <div class="card-header" style="font-size:20px">
             <div class="row ">
                   <div class="col col-6 text-center">
                     Tổng số lượt bình chọn: <strong><%=get_total_votes%></strong>
                   </div>  
-                  <div class ="col col-6 text-center"style="font-size:">Count down: <strong class="" id="demo"></strong></div>  
+                  <div class ="col col-6 text-center"style="font-size:">Hạn Chót: <strong class="" id="demo"></strong></div>  
             </div>  
         </div>
       <%end%>
@@ -102,9 +102,9 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                             <div class="modal-body" height="400">
-                              <div style="text-align: left; font-size:20px">
+                              <div style="text-align: left; font-size:15px">
                                 <p><strong><%=rapper.name%></strong>: Cảm ơn đã tin tưởng, tôi sẽ không làm bạn thất vọng!!</p> 
-                                <p><strong>me</strong>: Để tui sign in xong rồi tui sẽ vote cho ông!! </p>
+                                <p><strong>Tui</strong>: Để tui đăng kí tài khoản xong rồi tui sẽ vote cho ông!! </p>
                               </div>
                               <%=link_to "Sign In by Facebook", user_facebook_omniauth_authorize_path, class:"btn btn-lg btn-primary"%>
                             </div>
