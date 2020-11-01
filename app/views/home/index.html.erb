@@ -1,7 +1,15 @@
 
 <div class="container">
+
+  <%=link_to home_rules_path do%>
+    <div class="row">
+      <div class="col col-lg-12 text-white">
+        <h4>Muốn Là Người May Mắn Giành Được Phần Thưởng Trị Giá 2,000,000đ. Click vào đây để thêm chi tiết</h4>
+      </div>
+    </div>
+  <% end %>
   <% if current_user %>
-  <div class="card big-card mt-3" >
+  <div class="card big-card header-shadow mt-3 text-white" >
   <div class="card-header" style="font-size:25px">
       <div class="row ">
             <div class="m-0 col-4 text-center">Welcome <%=current_user.name%> to Rapvote </div>
@@ -33,7 +41,7 @@
                     <div class="view view-cascade overlay">
                       <%= image_tag("#{current_user.get_voted_rapper.image}", size: "300x300", alt: "#{current_user.get_voted_rapper.name}", class: "card-img-top") %>
                     </div>
-                    <div class="card-body" style="font-size:20px">
+                    <div class="card-body" style="font-size:20px; color:black;">
                       <div class="mb-3">
                         <h3><%=current_user.get_voted_rapper.name%></h3>
                       </div>
@@ -49,26 +57,10 @@
       <div class="card big-card mt-3" >
         <div class="card-header" style="font-size:25px">
             <div class="row ">
-                  <div class="col col-2 text-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Rules</button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-body" height="400">
-                            <div style="text-align: left; font-size:20px">
-                              
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Modal -->
-                  </div>
-                  <div class="col col-5 text-center">
+                  <div class="col col-6 text-center">
                     Tổng số lượt bình chọn: <strong><%=User.count%></strong>
                   </div>  
-                  <div class ="col col-5 text-center"style="font-size:">Count down: <strong class="" id="demo"></strong></div>  
+                  <div class ="col col-6 text-center"style="font-size:">Count down: <strong class="" id="demo"></strong></div>  
             </div>  
         </div>
       <%end%>
@@ -85,7 +77,7 @@
  
 
     <div class="row">
-      <div class="col col-lg-9 offset-lg-1"
+      <div class="col col-lg-10 offset-lg-1 bg-light"
         <%= bar_chart @data, library: {
           legend: {position: "left"},
         }%>
@@ -95,9 +87,11 @@
 
 <div class="row justify-content-center">
 <% @rappers.each do |rapper| %>
-          <div class="card m-3 col-lg-auto text-center" >
-              <%= image_tag("#{rapper.image}", size: "300x300", alt: "#{rapper.image}", class: "card-img-top") %>
-              <div class="card-body">
+          <div class="card m-3 text-center card-cascade wider" >
+            <div class="view view-cascade overlay">
+              <%= image_tag("#{rapper.image}", size: "300x400", alt: "#{rapper.image}", class: "card-img-top") %>
+            </div>
+              <div class="card-body card-body-cascade">
                 <div class="mb-3">
                   <h3><%=rapper.name%></h3>
                   <%if !current_user %>

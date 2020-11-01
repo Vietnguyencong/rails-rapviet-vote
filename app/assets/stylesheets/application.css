@@ -48,3 +48,21 @@ html{
     -o-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
     box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
 }
+
+.header-shadow{
+    background-image: url('https://images.unsplash.com/photo-1565034400360-c92c85339af9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* width: XXpx;
+    height: XXpx; */
+}
+
+body{
+    background-image: url('https://images.unsplash.com/photo-1549046701-6bd11cf71796?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2091&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
+.rules{
+    color:white;
+    font-size:20px;
+} 
