@@ -32,6 +32,7 @@ class HomeController < ApplicationController
     return total
   end
   helper_method :get_total_votes
+  
 
   private
     def user_params
