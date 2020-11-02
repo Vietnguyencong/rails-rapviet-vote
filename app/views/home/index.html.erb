@@ -25,7 +25,7 @@
              <div class="row">
               <div class="col col-5 d-flex flex-column " style="font-size:18px">
                 <%if current_user.voted%>
-                  <div class="mt-3">Bạn đã vote cho <strong><%=current_user.get_voted_rapper.name%></strong> </div>
+                  <div class="mt-3 ml-1">Bạn đã vote cho <strong><%=current_user.get_voted_rapper.name%></strong> </div>
                   <%if current_user.add_lucky_number%>
                     <div class="">Số may mắn của bạn: <%=current_user.lucky_number%></div>
                   <%else%>
@@ -34,7 +34,8 @@
                     <%end%>
                   <%end%>
                 <%end%>
-               
+               <div class="mt-4">Đừng Quên Bấm Nút Chia Sẻ Kèm Theo Caption và Hashtag Để Hoàn Thành Yêu Cầu Tham Gia Quay Số Trúng Thưởng Nhé!</div>
+               <div class="mt-4">Xem chi tiết thể lệ bình chọn tại <span style="color:#33CEFF"><%=link_to "Đây", home_rules_path%></span>  </div>
               </div>
               <div class="col col-7  ">
                   <div class="card mx-auto"  style="width: 17rem;" >
@@ -46,7 +47,7 @@
                         <h3><%=current_user.get_voted_rapper.name%></h3>
                       </div>
                     <div class="font-weight-light"> <%=current_user.get_voted_rapper.get_upvotes.size%> voters</div>
-                    <div id="button" class="fb-share-button mb-1 mt-1" data-href="https://rapviet.live/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                    <div id="button" class="fb-share-button mb-1 mt-1" data-href="https://www.facebook.com/bimm.thanh/posts/1495454750665111" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
 
                 </div>
           </div>

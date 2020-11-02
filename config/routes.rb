@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :rappers do
     member do #change to get
-      get 'like', to: 'rappers#upvote'
+      put 'like', to: 'rappers#upvote'
+      # match 'like',to: 'rappers#upvote', via: [:get, :put]
       # put 'dislike', to: 'rappers#downvote'
     end
   end
