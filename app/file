@@ -1,0 +1,32 @@
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+Started GET "/users/auth/facebook" for ::1 at 2020-11-01 17:29:35 -0600
+I, [2020-11-01T17:29:35.964741 #18612]  INFO -- omniauth: (facebook) Request phase initiated.
+Started GET "/users/auth/facebook/callback?code=AQA_RXC1tFBhZ8O6SctSA2l48hU9m77itXW05OaW0AHnATNbRplonQec36dA6AqXlEJKzovwih9RIwP0imP1yNoXpN2kKw1d7OznAXi8i8gOybMryu4bErj6yPJIYDqZKNS14v8TyneMgbWD2kUOzVawS3h3Vti3Vd9i7EPt60prTcEJpYbQjwmvoB8HghKn0SYY_S6n35GGZpe9T_klSdeECfmk3ti1nqhKQlVXSUfyOEcaKLBtp7XKK7WeEyk1Rp5D7REEpMoB1YphUNuVv0PMiI1K-sqkl5sjUaf0TY4Vl3m6liR5EFXUSqbFK_tfrtnJf7bMBME-hrn5d9M6RiCECFoXJil1ZnRapxAk5GkbLQ&state=aa7c41074f4ca03e61e0090f9c5202162bb572c8086f8d32" for ::1 at 2020-11-01 17:29:47 -0600
+I, [2020-11-01T17:29:47.897348 #18612]  INFO -- omniauth: (facebook) Callback phase initiated.
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQA_RXC1tFBhZ8O6SctSA2l48hU9m77itXW05OaW0AHnATNbRplonQec36dA6AqXlEJKzovwih9RIwP0imP1yNoXpN2kKw1d7OznAXi8i8gOybMryu4bErj6yPJIYDqZKNS14v8TyneMgbWD2kUOzVawS3h3Vti3Vd9i7EPt60prTcEJpYbQjwmvoB8HghKn0SYY_S6n35GGZpe9T_klSdeECfmk3ti1nqhKQlVXSUfyOEcaKLBtp7XKK7WeEyk1Rp5D7REEpMoB1YphUNuVv0PMiI1K-sqkl5sjUaf0TY4Vl3m6liR5EFXUSqbFK_tfrtnJf7bMBME-hrn5d9M6RiCECFoXJil1ZnRapxAk5GkbLQ", "state"=>"aa7c41074f4ca03e61e0090f9c5202162bb572c8086f8d32"}
+  User Load (0.4ms)  SELECT "users".* FROM "users" WHERE "users"."provide" = ? AND "users"."uid" = ? ORDER BY "users"."id" ASC LIMIT ?  [["provide", "facebook"], ["uid", "100490355208418"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `from_omniauth'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash expires=true expires_at=1609452296 token="EAAoXE3dAqpsBAMl2EN8ieAXp6lNM3nJbPdwUNriATbsQZCjQ0qGeSc1iW8EZAaCvZCSLbFwRod8ZApmxwZCNni5qd194gZCyyzyA2CMDvGtZBMDRdklVpL4x9eYJUYMf291RNN4YZAtjKKAdJUeAcILLe0AnKFZC4gPbO0tJtUvyFMZB95LxIqTlvpKs1fWnyKiR8ZD"> extra=#<OmniAuth::AuthHash raw_info=#<OmniAuth::AuthHash id="100490355208418" name="Nguyen Viet">> info=#<OmniAuth::AuthHash::InfoHash image="http://graph.facebook.com/v4.0/100490355208418/picture?access_token=EAAoXE3dAqpsBAMl2EN8ieAXp6lNM3nJbPdwUNriATbsQZCjQ0qGeSc1iW8EZAaCvZCSLbFwRod8ZApmxwZCNni5qd194gZCyyzyA2CMDvGtZBMDRdklVpL4x9eYJUYMf291RNN4YZAtjKKAdJUeAcILLe0AnKFZC4gPbO0tJtUvyFMZB95LxIqTlvpKs1fWnyKiR8ZD" name="Nguyen Viet"> provider="facebook" uid="100490355208418">
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 229ms (ActiveRecord: 0.4ms | Allocations: 2250)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2020-11-01 17:29:10 -0600
+I, [2020-11-01T17:29:10.115268 #18612]  INFO -- omniauth: (facebook) Request phase initiated.
+Started GET "/users/auth/facebook/callback?code=AQCb4jwbD6LyhhHCJ96x_8C620wuIwz34AQZK9wltrn9ktsLRyULXEo9lLbm25zObbQRAnaHQ1COl8fuALVxJWN7lJDjdyDbIHlLGBhbiLyXSSYTfQh0suRYu4h8AeYADkbIUMIi8HDrpmNazJa2cXjN5s3x_ztMKebXLcET8zva6YzC5LYz10g2fTXkRwv5jjQwto3WG6DLXH01JJojhS5f5iFKPzzJalNQcFd829XQAP8WWWX6_tngxBQcaLARYCDIiDjBZSYduf1mMJV6VUyagqIVhFuPf6ZIPQDj22SDyyu3ZXC7wI9Ab0dAZRSnNw4CdeZCIDpE4eaJT0XnYqcwAN6i0F2cBJl6rBWhOoI8bg&state=c8d30eb3ade551d14a6be32cb141b5637590f4190bdc758b" for ::1 at 2020-11-01 17:29:10 -0600
+I, [2020-11-01T17:29:10.418068 #18612]  INFO -- omniauth: (facebook) Callback phase initiated.
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+
+  Parameters: {"code"=>"AQCb4jwbD6LyhhHCJ96x_8C620wuIwz34AQZK9wltrn9ktsLRyULXEo9lLbm25zObbQRAnaHQ1COl8fuALVxJWN7lJDjdyDbIHlLGBhbiLyXSSYTfQh0suRYu4h8AeYADkbIUMIi8HDrpmNazJa2cXjN5s3x_ztMKebXLcET8zva6YzC5LYz10g2fTXkRwv5jjQwto3WG6DLXH01JJojhS5f5iFKPzzJalNQcFd829XQAP8WWWX6_tngxBQcaLARYCDIiDjBZSYduf1mMJV6VUyagqIVhFuPf6ZIPQDj22SDyyu3ZXC7wI9Ab0dAZRSnNw4CdeZCIDpE4eaJT0XnYqcwAN6i0F2cBJl6rBWhOoI8bg", "state"=>"c8d30eb3ade551d14a6be32cb141b5637590f4190bdc758b"}
+  User Load (0.7ms)  SELECT "users".* FROM "users" WHERE "users"."provide" = ? AND "users"."uid" = ? ORDER BY "users"."id" ASC LIMIT ?  [["provide", "facebook"], ["uid", "1490330441177542"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `from_omniauth'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash expires=true expires_at=1609437935 token="EAAoXE3dAqpsBAIMaATwdHvbINWMGWXNDS6ZCETcA1derWG8cWXvZAI4zGDOjxHxxc7mxZAgHCmaene9gbYGL3k0CJqZCdeY0r3QjhXEKlhJYEfoUzePBhKZACW2eiZAy1e9MnbxHWXd2h86ZCdd1e6jWAKgsT5aSpaU36VArCI08QZDZD"> extra=#<OmniAuth::AuthHash raw_info=#<OmniAuth::AuthHash email="vietnguyencong99@gmail.com" id="1490330441177542" name="Nguyen Cong Viet">> info=#<OmniAuth::AuthHash::InfoHash email="vietnguyencong99@gmail.com" image="http://graph.facebook.com/v4.0/1490330441177542/picture?access_token=EAAoXE3dAqpsBAIMaATwdHvbINWMGWXNDS6ZCETcA1derWG8cWXvZAI4zGDOjxHxxc7mxZAgHCmaene9gbYGL3k0CJqZCdeY0r3QjhXEKlhJYEfoUzePBhKZACW2eiZAy1e9MnbxHWXd2h86ZCdd1e6jWAKgsT5aSpaU36VArCI08QZDZD" name="Nguyen Cong Viet"> provider="facebook" uid="1490330441177542">
+   (0.1ms)  begin transaction
+  ↳ app/models/user.rb:19:in `from_omniauth'
+  User Exists? (0.4ms)  SELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "vietnguyencong99@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `from_omniauth'
+  User Create (1.8ms)  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provide", "uid", "name", "image") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["email", "vietnguyencong99@gmail.com"], ["encrypted_password", "$2a$12$aVicE.LWEH8AXTscQ9SaWeAF8.RM1z2NIahpNjtzoODjyUZtCa4hi"], ["created_at", "2020-11-01 23:29:11.219929"], ["updated_at", "2020-11-01 23:29:11.219929"], ["provide", "facebook"], ["uid", "1490330441177542"], ["name", "Nguyen Cong Viet"], ["image", "http://graph.facebook.com/v4.0/1490330441177542/picture?access_token=EAAoXE3dAqpsBAIMaATwdHvbINWMGWXNDS6ZCETcA1derWG8cWXvZAI4zGDOjxHxxc7mxZAgHCmaene9gbYGL3k0CJqZCdeY0r3QjhXEKlhJYEfoUzePBhKZACW2eiZAy1e9MnbxHWXd2h86ZCdd1e6jWAKgsT5aSpaU36VArCI08QZDZD"]]
