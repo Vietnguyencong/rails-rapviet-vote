@@ -41,8 +41,8 @@ class RappersController < ApplicationController
   # PATCH/PUT /rappers/1.json
   def update
     respond_to do |format|
-      if @rapper.update(rapper_params)
-        current_user.lucky_number = @rapper.lucky_number
+      if @rapper.update(rapper_params)  
+        current_user.lucky_number = rand(1..3000)
         current_user.add_lucky_number = true
         current_user.save
         format.html { redirect_to root_path, notice: 'Rapper was successfully updated.' }

@@ -11,12 +11,12 @@
     </div>
   <% end %>
   
-  <div class="form-group mb-2 mt-2">
-    <%= form.text_field :lucky_number,class: "form-control", placeholder:"nhập số yêu thích của bạn" %>
+  <div class="form-group mb-2 mt-2 hidden">
+    <%= form.hidden_field :lucky_number, value:"0" %>
   </div>
 
   <div class="actions mt-2">
-    <%= form.submit "Xác nhận số của bạn", class:"btn btn-light mb-2 ml-2"%>
+    <%= form.submit "Quay Số May Mắn Của Bạn", class:"btn btn-light mb-2 ml-2"%> 
   </div>
   
 <% end %>

@@ -15,16 +15,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController #
             # puts request.env["omniauth.auth"].info.name
             # puts request.env["omniauth.auth"].info.email
             auth = request.env["omniauth.auth"]
-            if (User.find_by(uid: auth.uid))
+            if (User.find_by(uid: auth.uid)) # nil = false != true
                 puts "found"
                 @new_user = User.find_by(uid: request.env["omniauth.auth"].uid)
-            else
+            else 
                 puts "creating user from scratch"
                 @new_user = User.create!(name: auth.info.name, email: "#{request.env["omniauth.auth"].uid}@gmail.com" , uid: auth.uid, password: Devise.friendly_token[0,20])
                 @new_user.save!
             end
             if @new_user.persisted?
-                sign_in_and_redirect @user, :event => :authentication
+                sign_in_and_redirect @new_user, :event => :authentication
                 set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
             else 
                 session["devise.facebook_data"] = request.env["omniauth.auth"]
