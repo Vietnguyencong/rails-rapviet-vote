@@ -69,6 +69,7 @@ class RappersController < ApplicationController
     @rap = Rapper.find(params[:id])
     if (current_user)
       current_user.voted = true
+      current_user.rapper = @rap.name
       current_user.save 
     end
     @rap.upvote_by current_user
