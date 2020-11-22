@@ -1,105 +1,130 @@
 
 <div class="container">
 
-  <%=link_to home_rules_path do%>
-    <div class="row">
-      <div class="col col-lg-12 text-white">
-        <h5 class="text-center">Cảm ơn tất cả mọi người đã tham gia quay số may mắn trùng thưởng. Kết quả người may mắn nhận được giải thưởng 2,000,000đ tiền mặt sẽ được thông báo sau 24h sau khi Rap Việt chính thức thông báo quán quân Rap Việt 2020    <span style="color:#33CEFF">đây</span> để xem chi tiết thể lệ bình chọn</h5>
-      </div>
+<%=link_to home_rules_path do%>
+  <div class="row">
+    <div class="col col-lg-12 text-white">
+      <h5 class="text-center">Cảm ơn tất cả mọi người đã tham gia quay số may mắn trùng thưởng. Kết quả người may mắn nhận được giải thưởng 2,000,000đ tiền mặt sẽ được thông báo sau 24h sau khi Rap Việt chính thức thông báo quán quân Rap Việt 2020    <span style="color:#33CEFF">đây</span> để xem chi tiết thể lệ bình chọn</h5>
     </div>
-  <% end %>
-  <% if current_user %>
-  <div class="card big-card header-shadow mt-3 text-white" >
-  <div class="card-header" style="font-size:20px">
-      <div class="row ">
-            <div class="m-0 col-4 text-center">Welcome <%=current_user.name%> to Rapvote </div>
-            <div class="col col-4 text-center">
-              Tổng số lượt bình chọn: <strong><%= get_total_votes %></strong>
-            </div>  
-            <div class ="col col-4"style="font-size:">Hạn Chót: <strong class="" id="demo"></strong></div>  
-      </div>  
   </div>
+<% end %>
+<% if current_user %>
+<div class="card big-card header-shadow mt-3 text-white" >
+<div class="card-header" style="font-size:20px">
+    <div class="row ">
+          <div class="m-0 col-4 text-center">Welcome <%=current_user.name%> to Rapvote </div>
+          <div class="col col-4 text-center">
+            Tổng số lượt bình chọn: <strong><%= get_total_votes %></strong>
+          </div>  
+          <div class ="col col-4"style="font-size:">Hạn Chót: <strong class="" id="demo"></strong></div>  
+    </div>  
+</div>
 
-  <div class="card-body ml-5">
-     <%if current_user.voted%>
-             <div class="row">
-              <div class="col col-5 d-flex flex-column " style="font-size:18px">
-                <%if current_user.voted%>
-                  <div class="mt-3">Bạn đã vote cho <strong><%=current_user.get_voted_rapper.name%></strong> </div>
-                  <%if current_user.add_lucky_number%>
-                    <div class="">Số may mắn của bạn: <%=current_user.lucky_number%></div>
-                  <%else%>
-                     <% if !current_user.add_lucky_number %> 
-                      <%= render 'rappers/form', rapper: current_user.get_voted_rapper, :data => {:confirm => "Bạn có chắc mình muốn chọn số này ?? tại vì bạn không thể đổi lại đâu"} %>
-                    <%end%>
+<div class="card-body ml-5">
+   <%if current_user.voted%>
+           <div class="row">
+            <div class="col col-5 d-flex flex-column" style="font-size:18px">
+              <%if current_user.voted%>
+                <div class="mt-3">Bạn đã vote cho <strong><%=current_user.get_voted_rapper.name%></strong> </div>
+                <%if current_user.add_lucky_number%>
+                  <div class="">Số may mắn của bạn: <%=current_user.lucky_number%></div>
+                <%else%>
+                   <% if !current_user.add_lucky_number %> 
+                    <%= render 'rappers/form', rapper: current_user.get_voted_rapper, :data => {:confirm => "Bạn có chắc mình muốn chọn số này ?? tại vì bạn không thể đổi lại đâu"} %>
                   <%end%>
                 <%end%>
-               <div class="mt-4">Đừng Quên Bấm Nút Chia Sẻ Kèm Theo Caption và Hashtag Để Hoàn Thành Yêu Cầu Tham Gia Quay Số Trúng Thưởng Nhé!</div>
-               <div class="mt-4">Xem chi tiết thể lệ bình chọn tại <span style="color:#33CEFF"><%=link_to "Đây", home_rules_path%></span>  </div>
-              </div>
-              <div class="col col-7  ">
-                  <div class="card mx-auto"  style="width: 17rem;" >
-                    <div class="view view-cascade overlay">
-                      <%= image_tag("#{current_user.get_voted_rapper.image}", size: "300x300", alt: "#{current_user.get_voted_rapper.name}", class: "card-img-top") %>
-                    </div>
-                    <div class="card-body" style="font-size:20px; color:black;">
-                      <div class="mb-3">
-                        <h3><%=current_user.get_voted_rapper.name%></h3>
-                      </div>
-                    <div class="font-weight-light"> <%=current_user.get_voted_rapper.get_upvotes.size%> voters</div>
-                    <div id="button" class="fb-share-button mb-1 mt-1" data-href="https://www.facebook.com/bimm.thanh/posts/1495454750665111" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
-
-                </div>
-          </div>
-              </div>
+              <%end%>
+             <div class="mt-4">Đừng Quên Bấm Nút Chia Sẻ Kèm Theo Caption và Hashtag Để Hoàn Thành Yêu Cầu Tham Gia Quay Số Trúng Thưởng Nhé!</div>
+             <div class="mt-4">Xem chi tiết thể lệ bình chọn tại <span style="color:#33CEFF"><%=link_to "Đây", home_rules_path%></span>  </div>
             </div>
-          <%end%>
-      <%else%>
-      <div class="card big-card mt-3" >
-        <div class="card-header" style="font-size:20px">
-            <div class="row ">
-                  <div class="col col-6 text-center">
-                    Tổng số lượt bình chọn: <strong><%=get_total_votes%></strong>
-                  </div>  
-                  <div class ="col col-6 text-center"style="font-size:">Hạn Chót: <strong class="" id="demo"></strong></div>  
-            </div>  
+            <div class="col col-7 d-flex flex-column">
+                <div class="card mx-auto"  style="width: 17rem;" >
+                  <div class="view view-cascade overlay">
+                    <%= image_tag("#{current_user.get_voted_rapper.image}", size: "200x270", alt: "#{current_user.get_voted_rapper.name}", class: "card-img-top") %>
+                  </div>
+                  <div class="card-body" style="font-size:20px; color:black;">
+                    <div class="mb-3">
+                      <h3><%=current_user.get_voted_rapper.name%></h3>
+                    </div>
+                  <div class="font-weight-light"> <%=current_user.get_voted_rapper.get_upvotes.size%> voters</div>
+                  <div id="button" class="fb-share-button mb-1 mt-1" data-href="https://www.facebook.com/bimm.thanh/posts/1495454750665111" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+
+              </div>
         </div>
-      <%end%>
-  </div>
-</div>
-          
-          <hr class="col col-9">
-         
-  
-
-  <!--after-user-vote view-->
-
-  <!--the rules and clock -->
- 
-
-    <div class="row">
-      <div class="col col-lg-10 offset-lg-1 bg-light"
-        <%= bar_chart @data, library: {
-          legend: {position: "left"},
-        }%>
+            </div>
+          </div>
+        <%end%>
+    <%else%>
+    <div class="card big-card mt-3" >
+      <div class="card-header" style="font-size:20px">
+          <div class="row ">
+                <div class="col col-6 text-center">
+                  Tổng số lượt bình chọn: <strong><%=get_total_votes%></strong>
+                </div>  
+                <div class ="col col-6 text-center"style="font-size:">Hạn Chót: <strong class="" id="demo"></strong></div>  
+          </div>  
       </div>
+    <%end%>
+</div>
+</div>
+        
+        <hr class="col col-9">
+       
+
+
+<!--after-user-vote view-->
+
+<!--the rules and clock -->
+
+
+  <div class="row">
+    <div class="col col-lg-10 offset-lg-1 bg-light"
+      <%= bar_chart @data, library: {
+        legend: {position: "left"},
+      }%>
     </div>
+  </div>
 <br>
 
 <div class="row justify-content-center">
 <% @rappers.each do |rapper| %>
-          <div class="card m-3 text-center card-cascade wider" >
-            <div class="view view-cascade overlay">
-              <%= image_tag("#{rapper.image}", size: "300x400", alt: "#{rapper.image}", class: "card-img-top") %>
-            </div>
-              <div class="card-body card-body-cascade">
-                <div class="mb-3">
-                  <h3><%=rapper.name%></h3>
-                  
-                </div>
-                <div class="font-weight-light" style="font-size:20px"> <%=rapper.get_upvotes.size%> lượt bình chọn</div>
-              </div>
-          </div>
+  <div class="card m-3 d-flex flex-column">
+  <div class="rapper rapper-card">
+    <div class="wrapper" style="background-image: url(<%=image_url(rapper.image)%>); width:400px; height:400px;">
+      <div class="data">
+        <div class="content">
+          <h3 class="title"><%=rapper.name%></h3>
+          <p class="text"></p>
+          <%if !current_user %>	                  
+            <!-- Button trigger modal -->	
+              <button type="button" class="btn btn-dark button" data-toggle="modal" data-target="#exampleModal">Vote</button>	
+              <!-- Modal -->	
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
+                <div class="modal-dialog modal-dialog-centered" role="document">	
+                  <div class="modal-content">	
+                    <div class="modal-body" height="400">	
+                      <div style="text-align: left; font-size:15px">	
+                        <p>Cám ơn bạn đã chọn tui!</p> 	
+                        <p>Bạn cần phải đăng nhập bằng Facebook để có thể bình chọn cho tui</p>	
+                      </div>	
+                      <%=link_to "Đăng nhập bằng Facebook", user_facebook_omniauth_authorize_path, class:"btn btn-lg btn-dark"%>	
+                    </div>	
+                  </div>	
+                </div>	
+              </div>	
+              <!-- Modal -->	
+          <% else %>	
+            <%if !current_user.voted%>	
+              <%= link_to "vote", like_rapper_path(rapper), method: :put, class: "btn btn-dark button",:data => {:confirm => 'Bạn chắc chắn muốn bình chọn cho rapper này?'} %>
+            <%end%>
+            <div style="height:50px;"></div>
+          <%end%>
+          <div class="font-weight-light text" style="font-size:20px"> <%=rapper.get_upvotes.size%> lượt bình chọn</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 <% end %>
 </div>
 

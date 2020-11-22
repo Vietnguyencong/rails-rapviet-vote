@@ -1,3 +1,192 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+// Variables
+$regal-blue: #034378;
+$san-juan: #2d4e68;
+$bermuda: #77d7b9;
+$white: #fff;
+$black: #000;
+$open-sans: 'Open Sans',
+sans-serif;
+// clear-fix mixin
+@mixin cf {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}
+
+.rapper * {
+  box-sizing: border-box;
+}
+
+.rapper body {
+  background-image: linear-gradient(to right, $regal-blue, $san-juan);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  font-family: $open-sans;
+}
+
+.rapper a {
+  text-decoration: none;
+}
+
+.rapper h3 {
+  font-family: $open-sans;
+  font-weight: 1000;
+//   color: #fff;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   text-shadow:   0px -1px 0 #212121,  
+//                  0px  1px 0 #212121,
+//                 -1px  0px 0 #212121,  
+//                  1px  0px 0 #212121,
+}
+
+// .rapper-row {
+//   max-width: 900px;
+//   margin: 50px auto 0;
+// }
+
+// Base styles
+.rapper-card {
+  float: left;
+  padding: 0;
+  width: 100%;
+  .menu-content {
+    @include cf;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    li {
+      display: inline-block;
+    }
+    a {
+      color: $white;
+    }
+  }
+  .wrapper {
+    height:400px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 19px 38px rgba($black, 0.3), 0 15px 12px rgba($black, 0.2);
+    &:hover {
+      .data {
+        transform: translateY(0);
+      }
+    }
+  }
+  .data {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(calc(70px + 1em));
+    transition: transform 0.5s;
+    .content {
+      padding: 1em;
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+//   .title {
+//     margin-top: 10px;
+//   }
+  .text {
+    height: 70px;
+    margin: 0;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow:   0px -1px 0 #212121,
+                0px  1px 0 #212121,
+                -1px  0px 0 #212121,  
+                1px  0px 0 #212121,
+  }
+  input[type='checkbox'] {
+    display: none;
+  }
+  input[type='checkbox']:checked + .menu-content {
+    transform: translateY(-60px);
+  }
+}
+
+.rapper {
+  .wrapper {
+    // background: url(https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg) center / cover no-repeat;
+    &:hover {
+      .menu-content {
+        span {
+          transform: translate(-50%, -10px);
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .header {
+    @include cf;
+    color: $white;
+    padding: 1em;
+    .date {
+      float: left;
+      font-size: 12px;
+    }
+  }
+  .menu-content {
+    float: right;
+    li {
+      margin: 0 5px;
+      position: relative;
+    }
+    span {
+      transition: all 0.3s;
+      opacity: 0;
+    }
+  }
+  .data {
+    color: $white;
+    transform: translateY(calc(70px + 4em));
+  }
+  .title {
+    a {
+      color: $white;
+    }
+  }
+  .button {
+    display: block;
+    width: 100px;
+    margin: 2em auto 1em;
+    text-align: center;
+    font-size: 10px;
+    color: $white;
+    line-height: 1;
+    position: relative;
+    font-weight: 700;
+    &::after {
+      content: '\2192';
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      transition: all 0.3s;
+    }
+    &:hover {
+      &::after {
+        transform: translate(5px, -50%);
+        opacity: 1;
+      }
+    }
+  }
+}
