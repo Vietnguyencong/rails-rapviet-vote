@@ -90,6 +90,6 @@ class RappersController < ApplicationController
   
     # Only allow a list of trusted parameters through.
     def rapper_params
-      params.require(:rapper).permit(:name, :url, images: [])
+      params.require(:rapper).permit(:name, :url, photos: [])
     end
 end

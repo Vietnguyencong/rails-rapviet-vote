@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_user, only: [:show, :edit, :update, :destroy, :generate_lucky_number]
 
-    def generate_lucky_number(user_id)
-        user = User.where(id: user_id)
-        user.lucky_number = rand(1..10000)
-        user.add_lucky_number = true
-        user.save
+    def generate_lucky_number
+        @user.lucky_number = rand(1..10000)
+        @user.add_lucky_number = true
+        @user.save
+        redirect_to(root_path)
     end
 
     private

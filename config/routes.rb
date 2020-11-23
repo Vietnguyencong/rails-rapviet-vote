@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/rules'
   get 'home/admin'
-  post 'users/generate_lucky_number'
+  post 'user/user/:id', to: 'users#generate_lucky_number', as: 'user'
   # get 'sessions#new', to: 'application#page_not_found'
 
   #get 404 page for production
