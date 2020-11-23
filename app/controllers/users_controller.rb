@@ -5,6 +5,8 @@ class UsersController < ApplicationController
         @user.lucky_number = rand(1..10000)
         @user.add_lucky_number = true
         @user.save
+        # send the email right here
+        LuckyNumberMailer.with(user: @user).lucky_number_mail.deliver_now
         redirect_to(root_path)
     end
 

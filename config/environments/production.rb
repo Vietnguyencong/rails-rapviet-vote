@@ -109,4 +109,14 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => "smtp.mailgun.org",
+  :port => 587,
+  :domain => "rapviet.live",
+  :user_name => "postmaster@mg.rapviet.live",
+  :password => "cb2d1ea167671f817da2e8b586fd2bd1-360a0b2c-4c47c550"
+}
 end

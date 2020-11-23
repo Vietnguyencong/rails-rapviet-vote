@@ -73,6 +73,7 @@ class RappersController < ApplicationController
       current_user.save 
     end
     @rap.upvote_by current_user
+    @rap.save
     redirect_back fallback_location: root_path
   end
   # def downvote
