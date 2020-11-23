@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <%=form.label :images %>
+    <%=form.file_field :images, multiple: true%>
+  </div>
   
   <div class="form-group mb-2 mt-2 hidden">
     <%= form.hidden_field :lucky_number, value:"0" %>

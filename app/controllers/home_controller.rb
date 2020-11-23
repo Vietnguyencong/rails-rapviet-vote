@@ -1,7 +1,13 @@
 class HomeController < ApplicationController
+
   def index
     @rappers = Rapper.all
     @data = get_rapper_data
+  end
+
+  def admin
+    authenticate_admin
+    @rappers = Rapper.all
   end
 
   #get data for chartkick
@@ -32,11 +38,10 @@ class HomeController < ApplicationController
     return total
   end
   helper_method :get_total_votes
-  
 
   private
     def user_params
       params.require(:user).permit(:lucky_number)
     end
-  
+
 end

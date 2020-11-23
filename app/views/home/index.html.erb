@@ -30,7 +30,8 @@
                   <div class="">Số may mắn của bạn: <%=current_user.lucky_number%></div>
                 <%else%>
                    <% if !current_user.add_lucky_number %> 
-                    <%= render 'rappers/form', rapper: current_user.get_voted_rapper, :data => {:confirm => "Bạn có chắc mình muốn chọn số này ?? tại vì bạn không thể đổi lại đâu"} %>
+                   <%= render 'rappers/form', rapper: current_user.get_voted_rapper, :data => {:confirm => "Bạn có chắc mình muốn chọn số này ?? tại vì bạn không thể đổi lại đâu"} %>
+                   <%= button_to "generate lucky number", users_generate_lucky_number_path(current_user["format"]), method: :post%>
                   <%end%>
                 <%end%>
               <%end%>

@@ -5,4 +5,11 @@ class ApplicationController < ActionController::Base
           format.all  { render nothing: true, status: 404 }
         end
     end
+
+    def authenticate_admin
+      return unless !(current_user && current_user.admin?)
+      redirect_to(root_path)
+    end
+    helper_method :authenticate_admin
+
 end

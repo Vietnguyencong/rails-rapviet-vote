@@ -1,0 +1,20 @@
+<div class="container">
+    <p id="notice"><%= notice %></p>
+    
+    <div class="row">
+    <% @rappers.each do |r| %>
+        <div class="card col-lg-3 text-center" style="width: 18rem; margin: 40px;">
+            <div class="card-body">              
+            <h5 class="card-title text-center"><%= r.name %></h5>
+            <%= link_to 'Edit Rapper', edit_rapper_path(r)%>
+            </div>
+        </div>
+    </div>
+    <% end %> 
+    
+    </div>
+    
+    
+
+</div>
+
