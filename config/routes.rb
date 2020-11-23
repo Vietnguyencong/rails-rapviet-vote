@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/index'
   get 'home/rules'
-
+  get 'home/admin'
+  post 'users/generate_lucky_number'
   # get 'sessions#new', to: 'application#page_not_found'
 
   #get 404 page for production
