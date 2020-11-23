@@ -56,7 +56,7 @@ class RappersController < ApplicationController
 
   # DELETE /rappers/1
   # DELETE /rappers/1.json
-  def destroy
+  def destroy 
     @rapper.destroy
     respond_to do |format|
       format.html { redirect_to rappers_url, notice: 'Rapper was successfully destroyed.' }
