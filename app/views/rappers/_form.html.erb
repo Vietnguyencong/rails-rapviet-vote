@@ -11,17 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%=form.label :images %>
-    <%=form.file_field :images, multiple: true%>
+  <div class="field text-white">
+    <%=form.label :photos %>
+    <%=form.file_field :photos, multiple: true%>
+  </div>  
+  <div class="actions">
+    <%= form.submit %>
   </div>
-  
-  <div class="form-group mb-2 mt-2 hidden">
-    <%= form.hidden_field :lucky_number, value:"0" %>
-  </div>
-
-  <div class="actions mt-2">
-    <%= form.submit "Quay Số May Mắn Của Bạn", class:"btn btn-light mb-2 ml-2"%> 
-  </div>
-  
 <% end %>

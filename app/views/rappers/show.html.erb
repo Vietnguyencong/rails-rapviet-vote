@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<h1 class="text-white">Rapper</h1>
+
+
+
+<% @rapper.photos do |photo| %>
+    <%= image_tag photo %>
+<% end %>
