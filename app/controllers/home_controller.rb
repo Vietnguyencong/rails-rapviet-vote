@@ -39,6 +39,7 @@ class HomeController < ApplicationController
   end
   helper_method :get_total_votes
 
+
   private
     def user_params
       params.require(:user).permit(:lucky_number)

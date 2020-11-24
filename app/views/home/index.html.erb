@@ -85,6 +85,21 @@
     </div>
   </div>
 <br>
+  <!-- Modal -->	
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
+    <div class="modal-dialog modal-dialog-centered" role="document">	
+      <div class="modal-content">	
+        <div class="modal-body" height="400">	
+          <div style="text-align: left; font-size:15px">	
+            <p>Cám ơn bạn đã chọn tui!</p> 	
+            <p>Bạn cần phải đăng nhập bằng Facebook để có thể bình chọn cho tui</p>	
+          </div>	
+          <%=link_to "Đăng nhập bằng Facebook", user_facebook_omniauth_authorize_path, class:"btn btn-lg btn-dark"%>	
+        </div>	
+      </div>	
+    </div>	
+  </div>	
+  <!-- Modal -->
 
 <div class="row justify-content-center">
 <% @rappers.each do |rapper| %>
@@ -97,22 +112,7 @@
           <p class="text"></p>
           <%if !current_user %>	                  
             <!-- Button trigger modal -->	
-              <button type="button" class="btn btn-dark button" data-toggle="modal" data-target="#exampleModal">Vote</button>	
-              <!-- Modal -->	
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	
-                <div class="modal-dialog modal-dialog-centered" role="document">	
-                  <div class="modal-content">	
-                    <div class="modal-body" height="400">	
-                      <div style="text-align: left; font-size:15px">	
-                        <p>Cám ơn bạn đã chọn tui!</p> 	
-                        <p>Bạn cần phải đăng nhập bằng Facebook để có thể bình chọn cho tui</p>	
-                      </div>	
-                      <%=link_to "Đăng nhập bằng Facebook", user_facebook_omniauth_authorize_path, class:"btn btn-lg btn-dark"%>	
-                    </div>	
-                  </div>	
-                </div>	
-              </div>	
-              <!-- Modal -->	
+              <button type="button" class="btn btn-dark button" data-toggle="modal" data-target="#exampleModal">Vote</button>		
           <% else %>	
             <%if !current_user.voted%>	
               <%= link_to "vote", like_rapper_path(rapper), method: :put, class: "btn btn-dark button",:data => {:confirm => 'Bạn chắc chắn muốn bình chọn cho rapper này?'} %>
@@ -127,6 +127,7 @@
   </div>
 <% end %>
 </div>
+
 
 </div>
 
