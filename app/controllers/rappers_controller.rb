@@ -1,4 +1,5 @@
 class RappersController < ApplicationController
+  before_action :authenticate_admin
   before_action :set_rapper, only: [:show, :edit, :update, :destroy]
 
   # GET /rappers
