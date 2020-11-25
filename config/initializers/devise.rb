@@ -314,8 +314,9 @@ Devise.setup do |config|
 
   # end
   #production
-  config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id), Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'public_profile,email', callback_url:"https://rapviet.live/users/auth/facebook/callback"
+  # config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id), Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'public_profile,email', callback_url:"https://rapviet.live/users/auth/facebook/callback"
 
-  #development
-  # config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id), Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'public_profile,email', callback_url:"http://localhost:3000/users/auth/facebook/callback"
+  # development
+  config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id), Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'public_profile,email'
+  # callback_url:"http://localhost:3000/users/auth/facebook/callback"
 end
