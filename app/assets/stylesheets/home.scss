@@ -124,6 +124,9 @@ sans-serif;
 
 .rapper {
   .wrapper {
+    background-position:center;
+    background-size: 100% 100%;
+    width: 400px;
     // background: url(https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg) center / cover no-repeat;
     &:hover {
       .menu-content {

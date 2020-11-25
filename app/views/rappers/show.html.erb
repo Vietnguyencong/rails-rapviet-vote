@@ -3,6 +3,6 @@
 
 
 
-<% @rapper.photos do |photo| %>
-    <%= image_tag photo %>
+<% @rapper.photos.each do |photo|%>
+    <%= image_tag photo%>
 <% end %>
