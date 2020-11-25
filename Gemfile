@@ -12,12 +12,13 @@ gem 'social-share-button'
 
 #data display chart
 gem 'chartkick'
-
+gem 'groupdate'
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 gem 'active_storage_validations'
 gem 'aws-sdk-s3', require: false
+gem 'mini_magick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'

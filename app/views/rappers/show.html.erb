@@ -1,8 +1,34 @@
 <p id="notice"><%= notice %></p>
-<h1 class="text-white">Rapper</h1>
-
-
-
-<% @rapper.photos.each do |photo|%>
-    <%= image_tag photo%>
-<% end %>
+<div class="container">
+    <h1 class="text-white"><%= @rapper.name %></h1>
+    <h4 class="text-white">Total votes: <%= @rapper.get_upvotes.size %></h4>
+    <%= line_chart @rapper.get_upvotes.group_by_day(:created_at).count,
+    library: {
+        legend: {
+             labels: {
+                  fontColor: 'white'
+                 }
+              },
+        title: {
+            display: true,
+            fontColor: 'white',
+            text: 'Votes Over Time'
+        }     ,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    fontColor: 'white'
+                },
+            }],
+          xAxes: [{
+                ticks: {
+                    fontColor: 'white'
+                },
+            }]
+        } 
+    }  %>
+    <% @rapper.photos.each do |photo|%>
+        <%= image_tag(@rapper.thumbnail(photo))%>
+    <% end %>   
+</div>
