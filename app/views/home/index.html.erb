@@ -80,7 +80,10 @@
   <div class="row">
     <div class="col col-lg-10 offset-lg-1 bg-light"
       <%= bar_chart @data, library: {
-        legend: {position: "left"},
+        legend: {position: "left",
+        animation: {easing: 'easeOutQuart'}
+        },
+
       }%>
     </div>
   </div>
