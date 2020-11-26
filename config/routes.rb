@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/rules'
   get 'home/admin'
+  
+  #generate lucky number for current user
   post 'user/user/:id', to: 'users#generate_lucky_number', as: 'user'
+
+  #set profile image for rapper
+  post 'set_rapper_image', to: 'rappers#set_rapper_image', as: :set_rapper_image
   # get 'sessions#new', to: 'application#page_not_found'
 
   #get 404 page for production

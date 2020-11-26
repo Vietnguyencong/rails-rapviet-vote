@@ -4,7 +4,7 @@ class Rapper < ApplicationRecord
     validates :photos, content_type: [:png, :jpg, :jpeg]
 
     #render only the 400x400 square center of the image
-    def thumbnail(photo)
-        return photo.variant(resize_to_fill: [400, 400]).processed
+    def thumbnail(photo_index)
+        return self.photos[photo_index].variant(resize_to_fill: [400, 400]).processed
     end
 end

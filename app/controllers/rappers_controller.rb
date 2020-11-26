@@ -83,6 +83,16 @@ class RappersController < ApplicationController
   #     redirect_back fallback_location: root_path
   #   end
 
+  #set rapper's image
+  def set_rapper_image
+    @r = Rapper.find(params[:id])
+    @photo_index = params[:profile_picture]
+    @r.profile_picture = @photo_index
+    @r.save
+    redirect_back(fallback_location: root_path)
+  end
+  helper_method :set_rapper_image
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -92,6 +102,6 @@ class RappersController < ApplicationController
   
     # Only allow a list of trusted parameters through.
     def rapper_params
-      params.require(:rapper).permit(:name, :url, photos: [])
+      params.require(:rapper).permit(:name, :profile_picture, photos: [])
     end
 end
