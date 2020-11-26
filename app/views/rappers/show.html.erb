@@ -32,24 +32,21 @@
     }  %>
     <div class="row justify-content-center">
         <% (0...@rapper.photos.count).each do |photo|%>
-            <div class="col-md-4 col-md-6 mb-2">
-                <a><%= image_tag(@rapper.thumbnail(photo), size: "400x400", alt: "rapper_image", class: "img-fluid z-depth-1", data: {toggle: "modal", target: "#imageModal#{photo}"}) %></a>
-            </div>
-            
-            
-            <!-- Modal -->	
-            <div class="modal fade" id="imageModal<%= photo %>" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">	
-                <div class="modal-dialog modal-dialog-centered" role="document">	
-                    <div class="modal-content">	
-                        <div class="modal-body" height="400" style="background-image: url('<%= Rails.application.routes.url_helpers.rails_representation_url(@rapper.thumbnail(photo), only_path: true)%>'); font-size:15px;">
-                        
-                        <%= button_to 'Set as main image', set_rapper_image_path(id: @rapper.id, profile_picture: photo), method: :post, class: "btn btn-light" %>	
-
+            <div class="card m-3 d-flex flex-column">
+                <div class="rapper rapper-card">
+                    <div class="wrapper" style="background-image: url('<%= Rails.application.routes.url_helpers.rails_representation_url(@rapper.thumbnail(photo), only_path: true)%>'); font-size:15px;">
+                        <div class="data">
+                            <div class="content">
+                                <p class="text"></p>
+                                <%= button_to 'Set as main image', set_rapper_image_path(id: @rapper.id, profile_picture: photo), method: :post, :data => {:confirm => 'You want set this image as the main profile for the rapper?'}, class: "btn btn-dark" %>
+                            </div>
                         </div>
-                    </div>	
-                </div>	
-            </div>	
-            <!-- Modal -->
+                    </div>
+                </div>
+            </div>
         <% end %>  
     </div>
 </div>
+
+
+
