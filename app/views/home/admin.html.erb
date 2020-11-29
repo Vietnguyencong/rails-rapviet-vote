@@ -1,5 +1,29 @@
 <div class="container">
     <p id="notice"><%= notice %></p>
+    <%= line_chart [
+        {name: "Users signed up", data: @users.group_by_day(:created_at).count},
+        {name: "Users voted", data: ActsAsVotable::Vote.all.group_by_day(:created_at).count}], lineWidth: 20,
+    library: {
+        animation: {easing: 'easeOutQuart'},
+        legend: {
+             labels: {
+                  fontColor: 'white'
+                 }
+              },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    fontColor: 'white'
+                },
+            }],
+          xAxes: [{
+                ticks: {
+                    fontColor: 'white'
+                },
+            }]
+        } 
+    }  %>
     
     <div class="row">
     <% @rappers.each do |rapper| %>
