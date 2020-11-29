@@ -31,12 +31,20 @@
         } 
     }  %>
     <hr class="col col-9">
-    <div class="text-white">
-        <h4>Photos</h4>
-        <%= link_to edit_rapper_path(@rapper), class: "text-white" do %>
-            Upload <i class="fas fa-cloud-upload-alt"></i>
-        <% end %>    
+    <h4 class="text-white">Photos</h4>
+    <%= link_to "#", data: {toggle: "modal", target: "#uploadModal"}, class: "text-white" do %>
+        Upload <i class="fas fa-cloud-upload-alt"></i>
+    <% end %>
+    <!-- Modal -->	
+    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">	
+        <div class="modal-dialog modal-dialog-centered" role="document">	
+        <div class="modal-content">	
+            <div class="modal-body">
+            <%= render 'form', rapper: @rapper%>
+        </div>	
+        </div>	
     </div>
+    <!-- Modal -->
     <div class="row justify-content-center">
         <% (0...@rapper.photos.count).each do |photo|%>
             <div class="card m-3 d-flex flex-column">

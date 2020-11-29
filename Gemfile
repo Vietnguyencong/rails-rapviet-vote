@@ -14,6 +14,9 @@ gem 'social-share-button'
 gem 'chartkick'
 gem 'groupdate'
 
+#jquery
+# gem 'jquery-rails'
+
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 gem 'active_storage_validations'
