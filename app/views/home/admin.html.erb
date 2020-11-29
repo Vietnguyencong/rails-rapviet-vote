@@ -1,5 +1,6 @@
 <div class="container">
-    <p id="notice"><%= notice %></p>
+    <h4 class="text-white">Users signed up: <%= @users.all.count %></h4>
+    <h4 class="text-white">Users voted: <%= get_total_votes %></h4>
     <%= line_chart [
         {name: "Users signed up", data: @users.group_by_day(:created_at).count},
         {name: "Users voted", data: ActsAsVotable::Vote.all.group_by_day(:created_at).count}], lineWidth: 20,
@@ -35,7 +36,7 @@
         </div>
     <% end %> 
     
-    </div
+    </div>
     
     
 

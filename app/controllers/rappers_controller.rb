@@ -86,8 +86,7 @@ class RappersController < ApplicationController
   #set rapper's image
   def set_rapper_image
     @r = Rapper.find(params[:id])
-    @photo_index = params[:profile_picture]
-    @r.profile_picture = @photo_index
+    @r.profile_picture = params[:profile_picture]
     @r.save
     redirect_back(fallback_location: root_path)
   end
