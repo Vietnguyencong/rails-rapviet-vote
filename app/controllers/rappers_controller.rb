@@ -46,7 +46,7 @@ class RappersController < ApplicationController
         # current_user.lucky_number = rand(1..10000)
         # current_user.add_lucky_number = true
         # current_user.save
-        format.html { redirect_to root_path, notice: 'Rapper was successfully updated.' }
+        format.html { redirect_to home_admin_path, notice: 'Rapper was successfully updated.' }
         format.json { render :show, status: :ok, location: @rapper }
       else
         format.html { render :edit }
@@ -92,6 +92,13 @@ class RappersController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
   helper_method :set_rapper_image
+
+  #delete rapper's photo attachment
+  def delete_photo_attachment
+    @image = ActiveStorage::Blob.find_signed(params[:id])
+    @image.attachments.first.purge
+    redirect_back(fallback_location: root_path)
+  end
 
 
   private

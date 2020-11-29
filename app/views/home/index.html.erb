@@ -41,7 +41,7 @@
             <div class="col col-7 d-flex flex-column">
                 <div class="card mx-auto"  style="width: 17rem;" >
                   <div class="view view-cascade overlay">
-                    <%= image_tag("#{current_user.get_voted_rapper.image}", size: "300x300", alt: "#{current_user.get_voted_rapper.name}", class: "card-img-top") %>
+                    <%= image_tag(current_user.get_voted_rapper.photos[current_user.get_voted_rapper.profile_picture], size: "300x300", alt: "#{current_user.get_voted_rapper.name}", class: "card-img-top") %>
                   </div>
                   <div class="card-body" style="font-size:20px; color:black;">
                     <div class="mb-3">
@@ -113,7 +113,7 @@
 <% @rappers.each do |rapper| %>
   <div class="card m-3 d-flex flex-column">
   <div class="rapper rapper-card">
-    <div class="wrapper" style="background-image: url(<%=image_url(rapper.image)%>);">
+    <div class="wrapper" style="background-image: url('<%= Rails.application.routes.url_helpers.rails_representation_url(rapper.thumbnail(rapper.profile_picture), only_path: true)%>');">
       <div class="data">
         <div class="content">
           <h3 class="title"><%=rapper.name%></h3>

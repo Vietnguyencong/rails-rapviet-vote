@@ -8,6 +8,7 @@ class HomeController < ApplicationController
   def admin
     authenticate_admin
     @rappers = Rapper.all
+    @users = User.all
   end
 
   #get data for chartkick

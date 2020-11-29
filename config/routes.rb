@@ -4,6 +4,9 @@ Rails.application.routes.draw do
       put 'like', to: 'rappers#upvote'
       # match 'like',to: 'rappers#upvote', via: [:get, :put]
       # put 'dislike', to: 'rappers#downvote'
+
+      #route to delete photo attachment function
+      delete :delete_photo_attachment
     end
   end
   # special controller that manage the response when the user's info send back to us
@@ -19,6 +22,8 @@ Rails.application.routes.draw do
   #set profile image for rapper
   post 'set_rapper_image', to: 'rappers#set_rapper_image', as: :set_rapper_image
   # get 'sessions#new', to: 'application#page_not_found'
+
+
 
   #get 404 page for production
   # if Rails.env.production?

@@ -3,9 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   acts_as_voter
+  #get voted rapper for specific user
   def get_voted_rapper
     return self.find_up_voted_items.first
   end
+
   devise :database_authenticatable, :validatable, :rememberable, :omniauthable, :omniauth_providers => [:facebook]
   def self.new_with_session(params, session)
     super.tap do |user|
