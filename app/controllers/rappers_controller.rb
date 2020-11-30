@@ -90,7 +90,6 @@ class RappersController < ApplicationController
     @r.save
     redirect_back(fallback_location: root_path)
   end
-  helper_method :set_rapper_image
 
   #delete rapper's photo attachment
   def delete_photo_attachment

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-    <%= image_tag (@rapper.photos[@rapper.profile_picture]), size:"200x200"%>
+    <%= image_tag (@rapper.profile_thumbnail(@rapper.profile_picture)), size:"200x200"%>
     <h1 class="text-white"><%= @rapper.name %></h1>
     <h4 class="text-white">Total votes: <%= @rapper.get_upvotes.size %></h4>
     <%= line_chart @rapper.get_upvotes.group_by_day(:created_at).count, lineWidth: 20, refresh: 60,
@@ -48,16 +48,16 @@
     <% end %>
     
     <div class="row justify-content-center">
-        <% (0...@rapper.photos.count).each do |photo|%>
+        <% @rapper.photos.each do |photo|%>
             <div class="card m-3 d-flex flex-column">
                 <div class="rapper rapper-card">
-                    <div class="wrapper" style="background-image: url('<%= Rails.application.routes.url_helpers.rails_representation_url(@rapper.thumbnail(photo), only_path: true)%>'); font-size:15px;">
+                    <div class="wrapper" style="background-image: url('<%= Rails.application.routes.url_helpers.rails_representation_url(@rapper.profile_thumbnail(photo.id), only_path: true)%>'); font-size:15px;">
                         <div class="data">
                             <div class="content">
                                 <p class="text"></p>
-                                <% if !(photo == @rapper.profile_picture) %>
-                                    <%= button_to 'Set as main image', set_rapper_image_path(id: @rapper.id, profile_picture: photo), method: :post, :data => {:confirm => 'You want set this image as the main profile for the rapper?'}, class: "btn btn-dark" %>
-                                    <%= link_to 'Delete photo', delete_photo_attachment_rapper_url(@rapper.photos[photo].signed_id), method: :delete, :data => {:confirm => 'Are you sure you want to delete this photo?'}, class: "btn btn-dark"%>
+                                <% if !(photo.id == @rapper.profile_picture) %>
+                                    <%= button_to 'Set as main image', set_rapper_image_path(id: @rapper.id, profile_picture: photo.id), method: :post, :data => {:confirm => 'You want set this image as the main profile for the rapper?'}, class: "btn btn-dark" %>
+                                    <%= link_to 'Delete photo', delete_photo_attachment_rapper_url(photo.signed_id), method: :delete, :data => {:confirm => 'Are you sure you want to delete this photo?'}, class: "btn btn-dark"%>
                                 <% end %>
                             </div>
                         </div>
