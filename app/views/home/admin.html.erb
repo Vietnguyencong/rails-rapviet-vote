@@ -42,7 +42,7 @@
           <% @rappers.each do |rapper| %>
             <tr>
               <td><%= rapper.id %></td>
-              <td><%= link_to rapper.name, rapper_path(rapper), class: "text-white" %></td>
+              <td><%= link_to "<strong>#{rapper.name}</strong>".html_safe, rapper_path(rapper), class: "text-white" %></td>
               <td><%= rapper.get_upvotes.size %></td>
             </tr>
           <% end %>
