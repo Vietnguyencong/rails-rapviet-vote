@@ -71,7 +71,7 @@
 </div>
 <div class="container">
         
-        <hr class="col col-9">
+<hr class="col col-9">
        
 
 
@@ -82,16 +82,33 @@
 
   <div class="row">
     <div class="col col-lg-12 bg-light"
-      <%= bar_chart @data, 
-        library: {
-          legend: {position: "left",
-          animation: {easing: 'easeOutQuart'},
-          backgroundColor: "transparent"
-        },
-
-      }%>
+      <%= bar_chart @data, refresh: 60,
+      library: {
+        chart: {backgroundColor: "nil"},        
+        animation: {easing: 'easeOutQuart'},
+        legend: {
+          labels: {
+                  fontColor: 'black'
+                 },
+          position: "left",
+              },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero:true,
+              fontColor: 'black'
+            },
+          }],
+          xAxes: [{
+            ticks: {
+                fontColor: 'black'
+            },
+          }]
+        } 
+    }%>
     </div>
   </div>
+  <hr class="col col-9">
 <br>
   <!-- Modal -->	
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">	

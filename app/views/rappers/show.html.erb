@@ -3,7 +3,7 @@
     <%= image_tag (@rapper.photos[@rapper.profile_picture]), size:"200x200"%>
     <h1 class="text-white"><%= @rapper.name %></h1>
     <h4 class="text-white">Total votes: <%= @rapper.get_upvotes.size %></h4>
-    <%= line_chart @rapper.get_upvotes.group_by_day(:created_at).count, lineWidth: 20,
+    <%= line_chart @rapper.get_upvotes.group_by_day(:created_at).count, lineWidth: 20, refresh: 60,
     library: {
         animation: {easing: 'easeOutQuart'},
         legend: {

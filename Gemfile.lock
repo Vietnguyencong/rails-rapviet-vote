@@ -120,6 +120,8 @@ GEM
     groupdate (5.2.1)
       activesupport (>= 5)
     hashie (4.1.0)
+    highcharts-rails (6.0.3)
+      railties (>= 3.1)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
@@ -283,6 +285,7 @@ DEPENDENCIES
   chartkick
   devise
   groupdate
+  highcharts-rails
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   mini_magick
