@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Used to be on https://rapviet.live
+Now it is only on rapviet.herokuapp.com (we ended our domain contract with domain broker after the contest ended)
 
-Things you may want to cover:
+This is a project created by Nguyen Le and Viet Nguyen with educational purpose to learn and practice multiple technologies.
 
-* Ruby version
+The project was inspired by a very popular Vietnamese rap contest hosted by Vietname National Television Network - Rap Viet. We created this web application to essential allow users to sign up and vote for their favorite rapper. To make the voting more interactive, we also created a chart that displays concurrent voting counts for each rapper. Hence, it allows the voters to see how well their rapper is doing against the competition. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Technologies used:
+Ruby on Rails Framework
+AWS S3 Storage
+Oauth 2.0 with Facebook
+Postgresql Database
+Heroku Service
