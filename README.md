@@ -1,7 +1,7 @@
 # README
 
 Used to be on https://rapviet.live. 
-Now it is only on rapviet.herokuapp.com (we ended our domain contract with domain broker after the contest ended).
+Now it is only on https://rapviet.herokuapp.com (we ended our domain contract with domain broker after the contest ended).
 
 This is a project created by Nguyen Le and Viet Nguyen with educational purpose to learn and practice multiple technologies especially Ruby on Rails.
 
